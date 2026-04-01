@@ -1,0 +1,110 @@
+.ulasan-page {
+    padding: 30px 50px;
+}
+
+/* HERO */
+.ulasan-hero {
+    background: #1e40af;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.form-container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.form-container textarea {
+    height: 100px;
+}
+
+.form-container button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+/* RATING */
+.rating-stars {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.star.active {
+    color: gold;
+}
+
+/* ULASAN LIST */
+.ulasan-list-section {
+    margin-top: 40px;
+}
+
+.ulasan-list {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+}
+
+.ulasan-card {
+    min-width: 260px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.berita-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.btn-berita {
+    background: #2563eb;
+    color: white;
+    padding: 3px 8px;
+    font-size: 11px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.user {
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.alert {
+    background: #16a34a;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 15px auto;
+    max-width: 600px;
+    text-align: center;
+    font-size: 14px;
+}

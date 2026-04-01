@@ -1,0 +1,95 @@
+.detail-container {
+    padding: 30px 50px;
+}
+
+/* HERO */
+.detail-hero img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* BACK */
+.btn-back {
+    display: inline-block;
+    margin: 15px 0;
+    text-decoration: none;
+    color: #2563eb;
+    font-size: 14px;
+}
+
+/* CONTENT */
+.detail-content {
+    max-width: 800px;
+}
+
+.kategori {
+    background: #e0e7ff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.detail-content h1 {
+    margin: 10px 0;
+}
+
+.tanggal {
+    font-size: 13px;
+    color: #777;
+}
+
+.caption {
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* ULASAN */
+.ulasan-section {
+    margin-top: 40px;
+}
+
+.ulasan-list {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.ulasan-card {
+    min-width: 280px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.judul-ref {
+    color: #555;
+}
+
+.rating {
+    margin: 10px 0;
+}
+
+/* TAMBAHAN */
+.ulasan-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.ulasan-text {
+    margin: 10px 0;
+}
+
+.no-ulasan {
+    color: #777;
+    font-style: italic;
+}

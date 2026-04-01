@@ -1,0 +1,16 @@
+{
+  "keywords": [
+    "slot",
+    "gacor",
+    "promo",
+    "bonus",
+    "deposit",
+    "cek bio"
+  ],
+  "patterns": [
+    "http",
+    "www",
+    "\\.com",
+    "08\\d{8,12}"
+  ]
+}
