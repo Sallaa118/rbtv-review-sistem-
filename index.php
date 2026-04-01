@@ -19,7 +19,6 @@ include 'includes/header.php';
 
 <div class="container">
 
-    <!-- BERITA -->
     <div class="section-header">
         <h2>Berita Terkini</h2>
         <a href="program.php">Lihat Semua</a>
