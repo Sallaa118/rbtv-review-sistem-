@@ -1,0 +1,1 @@
+console.log("Halaman Tentang Loaded");

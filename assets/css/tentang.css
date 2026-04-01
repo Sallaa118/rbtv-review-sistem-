@@ -1,0 +1,155 @@
+.tentang-container {
+    padding: 40px 50px;
+}
+
+/* HERO */
+.tentang-hero {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+    padding: 60px;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tentang-hero h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.tentang-hero p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* SECTION */
+.section {
+    margin-bottom: 50px;
+}
+
+.section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section i {
+    color: #2563eb;
+}
+
+/* BOX */
+.card-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    line-height: 1.7;
+    color: #444;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: justify;
+}
+
+/* FITUR */
+.fitur-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.fitur-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.fitur-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.fitur-card i {
+    background: #e0e7ff;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.fitur-card h4 {
+    margin-bottom: 5px;
+}
+
+/* VISI MISI */
+.visi-misi {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.vm-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #2563eb;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.vm-card ul {
+    padding-left: 20px;
+}
+
+/* DEVELOPER */
+.dev-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.dev-card {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.dev-card:hover {
+    transform: translateY(-5px);
+}
+
+.dev-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.dev-card h4 {
+    margin: 5px 0;
+}
+
+.dev-card p {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.dev-card span {
+    font-size: 13px;
+    color: #777;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .fitur-grid,
+    .visi-misi {
+        grid-template-columns: 1fr;
+    }
+
+    .dev-grid {
+        flex-direction: column;
+    }
+}

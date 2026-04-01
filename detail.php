@@ -22,16 +22,13 @@ if(isset($_GET['id'])) {
 
 $data = mysqli_fetch_assoc($query);
 
-/* =========================
-   VALIDASI DATA
-========================= */
 if(!$data){
     echo "<h2 style='padding:50px'>Berita tidak ditemukan</h2>";
     exit;
 }
 
 /* =========================
-   AMBIL ULASAN TERKAIT
+   AMBIL ULASAN + RATING
 ========================= */
 $ulasan = mysqli_query($conn, "
     SELECT * FROM ulasan 
@@ -40,91 +37,111 @@ $ulasan = mysqli_query($conn, "
     AND status='Approved'
     ORDER BY waktu_kirim DESC
 ");
+
+$count = mysqli_num_rows($ulasan);
+$total = 0;
+
+$temp = [];
+while($row = mysqli_fetch_assoc($ulasan)){
+    $total += $row['rating'];
+    $temp[] = $row;
+}
+
+$avg = $count > 0 ? round($total/$count,1) : 0;
 ?>
 
 <link rel="stylesheet" href="assets/css/detail.css">
 
 <div class="detail-container">
 
-    <!-- HERO IMAGE -->
-    <div class="detail-hero">
-        <img src="assets/img/berita/<?php echo $data['gambar_berita']; ?>" alt="">
-    </div>
-
-    <!-- BACK BUTTON -->
+    <!-- BACK -->
     <a href="program.php" class="btn-back">← Kembali ke Program</a>
 
-    <!-- CONTENT -->
-    <div class="detail-content">
+    <!-- MAIN CARD -->
+    <div class="detail-card">
 
-        <span class="kategori">
-            <?php echo $data['kategori_berita']; ?>
-        </span>
+        <!-- IMAGE -->
+        <div class="detail-hero">
+            <img src="assets/img/berita/<?php echo $data['gambar_berita']; ?>">
+        </div>
 
-        <h1>
-            <?php echo $data['judul_berita']; ?>
-        </h1>
+        <!-- CONTENT -->
+        <div class="detail-content">
 
-        <p class="tanggal">
-            <?php echo date('l, d F Y', strtotime($data['tanggal_berita'])); ?>
-        </p>
+            <span class="kategori"><?php echo $data['kategori_berita']; ?></span>
 
-        <p class="caption">
-            <?php echo nl2br($data['caption_berita']); ?>
-        </p>
+            <h1><?php echo $data['judul_berita']; ?></h1>
+
+            <!-- META -->
+            <div class="meta">
+                <span>
+                    <?php echo date('l, d F Y', strtotime($data['tanggal_berita'])); ?>
+                </span>
+
+                <span class="rating-summary">
+                    ⭐ <?php echo $avg; ?> (<?php echo $count; ?> ulasan)
+                </span>
+            </div>
+
+            <hr>
+
+            <p class="caption">
+                <?php echo nl2br($data['caption_berita']); ?>
+            </p>
+
+            <!-- BUTTON -->
+            <div class="action-btn">
+                <a href="ulasan.php" class="btn-primary">Beri Ulasan</a>
+                <a href="program.php" class="btn-secondary">Lihat Program Lain</a>
+            </div>
+
+        </div>
 
     </div>
 
     <!-- ULASAN -->
     <div class="ulasan-section">
 
-        <h2>Ulasan Terkait Berita Ini</h2>
+        <h2>Ulasan Pengguna</h2>
 
-        <div class="ulasan-list">
+        <?php if($count > 0): ?>
+            <div class="ulasan-list">
+                <?php foreach($temp as $row): ?>
 
-            <?php 
-            if(mysqli_num_rows($ulasan) > 0) {
-                while($row = mysqli_fetch_assoc($ulasan)) { 
-            ?>
+                    <div class="ulasan-card">
 
-                <div class="ulasan-card">
+                        <!-- TOP -->
+                        <div class="ulasan-top">
+                            <div class="rating">
+                                <?php 
+                                for($i=1;$i<=5;$i++){
+                                    echo $i <= $row['rating'] ? "⭐" : "☆";
+                                }
+                                ?>
+                            </div>
 
-                    <!-- HEADER -->
-                    <div class="ulasan-top">
-                        <span class="kategori">
-                            <?php echo $row['kategori_berita']; ?>
-                        </span>
+                            <span class="tanggal">
+                                <?php echo date('d F Y', strtotime($row['waktu_kirim'])); ?>
+                            </span>
+                        </div>
+
+                        <!-- ISI -->
+                        <p class="ulasan-text">
+                            <?php echo $row['isi_ulasan_raw']; ?>
+                        </p>
+
+                        <!-- USER -->
+                        <div class="user">
+                            <?php echo $row['nama_user']; ?>
+                        </div>
+
                     </div>
 
-                    <!-- RATING -->
-                    <div class="rating">
-                        <?php 
-                        for($i=1;$i<=5;$i++){
-                            echo $i <= $row['rating'] ? "⭐" : "☆";
-                        }
-                        ?>
-                    </div>
-
-                    <!-- ISI -->
-                    <p class="ulasan-text">
-                        <?php echo $row['isi_ulasan_raw']; ?>
-                    </p>
-
-                    <!-- USER -->
-                    <div class="user">
-                        <?php echo $row['nama_user']; ?>
-                    </div>
-
-                </div>
-
-            <?php 
-                }
-            } else {
-                echo "<p class='no-ulasan'>Belum ada ulasan untuk berita ini</p>";
-            }
-            ?>
-
-        </div>
+                <?php endforeach; ?>
+            </div>    
+        <?php else: ?>
+            <p class="no-ulasan">Belum ada ulasan untuk berita ini</p>
+        <?php endif; ?>
 
     </div>
 
